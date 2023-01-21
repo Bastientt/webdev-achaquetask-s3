@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import {Component, Input, OnInit} from '@angular/core';
 import {Task} from "../../model/task";
 import {TasksService} from "../../service/tasks.service";
@@ -22,7 +23,6 @@ export class TaskListComponent implements OnInit {
   ngOnInit(): void {
     this.newTask.status = this.status;
   }
-
   add(): void {
     this.taskService.addTask(this.newTask).subscribe({
       next: (data) => {
@@ -54,5 +54,25 @@ export class TaskListComponent implements OnInit {
 
   private refreshTasks(): void {
     this.tasks = this.tasks.filter(currentTask => currentTask._id == currentTask._id);
+  }
+
+  drop(event:CdkDragDrop<any[]>){
+    console.log(event);     
+
+    console.log("avant")
+    console.log(this.tasks[event.currentIndex]);
+    console.log(this.tasks[event.previousIndex]);
+  
+    let save=this.tasks[event.currentIndex];
+    this.tasks[event.currentIndex]=this.tasks[event.previousIndex];
+    this.tasks[event.previousIndex]=save;
+
+
+    console.log("après")
+    console.log(this.tasks[event.currentIndex]);
+    console.log(this.tasks[event.previousIndex]);
+  
+
+    this.refreshTasks();
   }
 }

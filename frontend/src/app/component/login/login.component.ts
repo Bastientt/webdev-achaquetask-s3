@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent {
   user: User = {login: '', password: ''};
-  error: boolean = false;
+  error: boolean = true ;
   constructor(private userService: UserService, private router: Router) { }
 
   submit(): void {

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 import { LoginComponent } from './component/login/login.component';
 import { TasksComponent } from './component/tasks/tasks.component';
 import { AppRoutingModule } from "./app-routing-module";
@@ -22,7 +23,8 @@ import { TaskListComponent } from './component/taskList/taskList.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
